@@ -89,4 +89,4 @@ Things you may want to cover:
 
 - has_one :address
 - belongs_to :product
-- belongs_to :users
+- belongs_to :user
