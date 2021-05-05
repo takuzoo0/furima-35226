@@ -27,7 +27,7 @@
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", "#", method: :delete, class:"item-destroy" %>
-    <% else user_signed_in? %>
+    <% else %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>
