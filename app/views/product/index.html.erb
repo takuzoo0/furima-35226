@@ -123,12 +123,12 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿商品', new_product_path, class: "subtitle" %>
+    <%= link_to '新規投稿商品' , new_product_path, class: "subtitle" %>
     <ul class='item-lists'>
 
       <% @products.each do |product| %>
       <li class='list'>
-        <%= link_to "#" do %>
+        <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
 
