@@ -16,14 +16,13 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%= @product.price %>
+        ¥ <%= @product.price %>
       </span>
       <span class="item-postage">
         <%= @product.shipping_charge.name %>
       </span>
     </div>
 
-    <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
     <% if user_signed_in? && current_user.id == @product.user_id %>
     <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
@@ -34,7 +33,6 @@
     <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% else %>
     <% end %>
-    <%# //ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
     <div class="item-explain-box">
       <span><%= @product.description %></span>
@@ -102,9 +100,7 @@
       後ろの商品 ＞
     </a>
   </div>
-  <%# 詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
   <a href="#" class="another-item"><%= @product.category.name %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
