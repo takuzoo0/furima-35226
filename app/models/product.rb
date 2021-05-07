@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   belongs_to :shipping_charge
   belongs_to :ship_to_day
   belongs_to :user
-  # has_one :buyer
+  has_one :buyer
   has_one_attached :image
 
   with_options presence: true do
