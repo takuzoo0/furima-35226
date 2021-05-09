@@ -48,6 +48,11 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
       end
+      it 'phone_numberは英数字混合では保存ができない' do
+        @buyer_address.phone_number = 'abcdefg1234'
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Phone number is invalid")
+      end
       it 'phone_numberは9桁以下の数値では保存ができない' do
         @buyer_address.phone_number = '123456789'
         @buyer_address.valid?
