@@ -1,5 +1,7 @@
 class BuyersController < ApplicationController
   before_action :set_product
+  before_action :move_to_index
+
   def index
     @buyer_address = BuyerAddress.new
   end
@@ -33,4 +35,15 @@ class BuyersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def move_to_index
+    if user_signed_in?
+      if current_user == @product.user || @product.buyer.present?
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
+  end
+
 end

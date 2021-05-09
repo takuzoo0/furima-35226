@@ -47,7 +47,7 @@ class ProductController < ApplicationController
   end
 
   def move_to_index
-    unless current_user == @product.user
+    unless current_user == @product.user && @product.buyer.blank?
       redirect_to root_path
     end
   end
