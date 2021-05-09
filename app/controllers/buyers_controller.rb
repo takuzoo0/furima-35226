@@ -1,5 +1,6 @@
 class BuyersController < ApplicationController
   before_action :set_product
+  before_action :authenticate_user!
   before_action :move_to_index
 
   def index
@@ -37,11 +38,7 @@ class BuyersController < ApplicationController
   end
 
   def move_to_index
-    if user_signed_in?
-      if current_user == @product.user || @product.buyer.present?
-        redirect_to root_path
-      end
-    else
+    if current_user == @product.user || @product.buyer.present?
       redirect_to root_path
     end
   end

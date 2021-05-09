@@ -12,6 +12,10 @@ RSpec.describe BuyerAddress, type: :model do
       it '配送先の情報とtokenが存在すれば保存できる' do
         expect(@buyer_address).to be_valid
       end
+      it 'building_nameが空でも保存できる' do
+        @buyer_address.building_name = ''
+        expect(@buyer_address).to be_valid
+      end
     end
     context '情報が保存できないとき' do
       it 'postal_codeが空では保存できない' do
@@ -53,6 +57,16 @@ RSpec.describe BuyerAddress, type: :model do
         @buyer_address.token = nil
         @buyer_address.valid?
         expect(@buyer_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'user_idが空だと保存できない' do
+        @buyer_address.user_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'product_idが空だと保存できない' do
+        @buyer_address.product_id = nil
+        @buyer_address.valid?
+        expect(@buyer_address.errors.full_messages).to include("Product can't be blank")
       end
     end
   end
